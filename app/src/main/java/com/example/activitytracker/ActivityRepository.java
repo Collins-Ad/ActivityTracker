@@ -6,7 +6,7 @@ import java.util.List;
 // Singleton so both Activities share the same in-memory list
     public class ActivityRepository {
         private static ActivityRepository instance;
-        private final List<TrackedActivity> activities = new ArrayList<>();
+        private final List<com.example.activitytracker.TrackedActivity> activities = new ArrayList<>();
 
         private ActivityRepository() {}
 
@@ -15,16 +15,16 @@ import java.util.List;
             return instance;
         }
 
-        public List<TrackedActivity> getAll() { return activities; }
+        public List<com.example.activitytracker.TrackedActivity> getAll() { return activities; }
 
-        public void add(TrackedActivity a) { activities.add(a); }
+        public void add(com.example.activitytracker.TrackedActivity a) { activities.add(a); }
 
         public void delete(String id) {
             activities.removeIf(a -> a.id.equals(id));
         }
 
-        public TrackedActivity findById(String id) {
-            for (TrackedActivity a : activities)
+        public com.example.activitytracker.TrackedActivity findById(String id) {
+            for (com.example.activitytracker.TrackedActivity a : activities)
                 if (a.id.equals(id)) return a;
             return null;
         }
