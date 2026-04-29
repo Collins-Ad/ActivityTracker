@@ -1,6 +1,7 @@
 package com.example.activitytracker;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +19,10 @@ public class ActivityLayout extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
+
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // adds the ← arrow
 
         repo = ActivityRepository.getInstance();
         String id = getIntent().getStringExtra("activity_id");
@@ -56,6 +61,15 @@ public class ActivityLayout extends AppCompatActivity {
                         .setNegativeButton("Cancel", null)
                         .show()
         );
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // goes back to MainActivity
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void updateUI(TextView tvFrequency, TextView tvCount) {

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openActivity(TrackedActivity activity) {
-        Intent intent = new Intent(this, TrackedActivity.class);
+        Intent intent = new Intent(this, ActivityLayout.class);
         intent.putExtra("activity_id", activity.id);
         startActivity(intent);
     }
