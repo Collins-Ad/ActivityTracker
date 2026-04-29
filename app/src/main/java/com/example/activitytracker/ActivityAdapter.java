@@ -1,15 +1,23 @@
 package com.example.activitytracker;
 
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHolder> {
 
-    private final List<TrackedActivity> activities;
-    private final Consumer<TrackedActivity> onClick;
+    private final List<com.example.activitytracker.TrackedActivity> activities;
+    private final Consumer<com.example.activitytracker.TrackedActivity> onClick;
 
-    public ActivityAdapter(List<TrackedActivity> activities, Consumer<TrackedActivity> onClick) {
+    public ActivityAdapter(List<com.example.activitytracker.TrackedActivity> activities, Consumer<com.example.activitytracker.TrackedActivity> onClick) {
         this.activities = activities;
         this.onClick = onClick;
     }
@@ -23,7 +31,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TrackedActivity activity = activities.get(position);
+        com.example.activitytracker.TrackedActivity activity = activities.get(position);
         holder.tvName.setText(activity.name);
         holder.colorDot.setColorFilter(parseColor(activity.color));
         holder.itemView.setOnClickListener(v -> onClick.accept(activity));
